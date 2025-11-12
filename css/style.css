@@ -1,90 +1,453 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
+/* ========================================= */
+/* --- ESTILOS GLOBAIS --- */
+/* ========================================= */
 body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #0d1222;
-  color: #e2e8f0;
-  line-height: 1.6;
-}
-
-/* ========================================= */
-/* --- RESPONSIVIDADE DO HEADER/NAVBAR --- */
-/* ========================================= */
-
-/* Esconde o botão hamburguer por padrão (para desktop) */
-.hamburger-menu {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 2em;
-    color: white;
-    cursor: pointer;
-}
-
-/* Estilos para o menu de navegação em mobile */
-#main-nav ul {
-    list-style: none;
-    padding: 0;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
-    display: flex; /* Para desktop */
+    padding: 0;
+    background-color: #0d1222; /* Fundo principal escuro */
+    color: #e2e8f0; /* Cor de texto padrão claro */
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
 }
 
-#main-nav ul li a {
-    color: white;
+/* Links globais, se aplicável, para reset */
+a {
     text-decoration: none;
-    padding: 10px 15px;
-    display: block;
-    transition: background-color 0.3s;
+    color: inherit; /* Herda a cor do pai */
 }
 
-#main-nav ul li a:hover {
-    background-color: rgba(77, 194, 248, 0.2);
+/* ========================================= */
+/* --- NAVBAR E CABEÇALHO --- */
+/* ========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #0b101c;
+    border-bottom: 1px solid #1a202c;
+    position: sticky; /* Navbar fixa no topo */
+    top: 0;
+    z-index: 1000; /* Garante que fique acima de outros conteúdos */
+}
+
+/* Logo da Empresa */
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.logo-icon {
+    background-image: url('/img/YggdraTech.jpeg'); /* Caminho ajustado para o GitHub Pages */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: #222; /* Fundo fallback para o ícone */
+}
+
+.logo-text {
+    font-family: 'Poppins', sans-serif;
+    color: #a0aec0; /* Cor do texto do logo */
+    transition: color 0.3s;
+}
+
+.logo-text:hover {
+    color: #00bcd4; /* Cor ao passar o mouse */
+}
+
+/* Menu de Navegação */
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar nav ul li a {
+    color: #a0aec0;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 15px; /* Ajustado para melhor toque */
+    display: block;
+    transition: color 0.3s, background-color 0.3s;
     border-radius: 5px;
 }
 
+.navbar nav ul li a:hover {
+    color: #00bcd4;
+    background-color: rgba(0, 188, 212, 0.1); /* Um leve highlight */
+}
 
-/* MEDIA QUERIES PARA RESPONSIVIDADE */
-@media (max-width: 768px) {
-    /* Navbar em mobile */
+/* Botão do Menu Hamburguer (escondido por padrão) */
+.hamburger-menu {
+    display: none; /* Escondido em desktop */
+    background: none;
+    border: none;
+    font-size: 2.5em; /* Aumentado para melhor visualização */
+    color: #a0aec0; /* Cor para combinar com o tema */
+    cursor: pointer;
+    z-index: 1001; /* Garante que fique acima do menu quando aberto */
+}
+
+/* ========================================= */
+/* --- SEÇÃO HERO --- */
+/* ========================================= */
+.hero-section {
+    background-color: #111827;
+    background-image: url('/img/banner.jpg'); /* Caminho ajustado para o GitHub Pages */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 550px; /* Usar min-height para flexibilidade */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    padding: 80px 20px; /* Padding para garantir espaço em telas menores */
+    box-sizing: border-box; /* Inclui padding na altura/largura */
+}
+
+/* Overlay para escurecer a imagem de fundo */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Escurece a imagem para o texto se destacar */
+    z-index: 0;
+}
+
+.hero-content {
+    z-index: 1; /* Garante que o conteúdo fique acima do overlay */
+    max-width: 800px; /* Limita a largura do conteúdo */
+}
+
+.hero-content h1 {
+    font-size: 3.8em; /* Ajustado para ser impactante */
+    margin: 0;
+    line-height: 1.1;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Sombra para destaque */
+}
+
+.hero-content .slogan {
+    font-size: 1.3em;
+    margin-top: 15px;
+    color: #e2e8f0;
+    opacity: 0.9;
+}
+
+.btn {
+    background-color: #00bcd4;
+    color: #0d1222;
+    padding: 14px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 30px;
+    display: inline-block; /* Para garantir padding e margem */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #00a0b8;
+    transform: translateY(-2px);
+}
+
+/* ========================================= */
+/* --- SEÇÃO DE SERVIÇOS (VALORES) --- */
+/* ========================================= */
+.services-section {
+    padding: 80px 50px;
+    text-align: center;
+    background-color: #0d1e31;
+    color: #f0f0f0;
+}
+
+.services-section h2 {
+    color: #a0aec0;
+    font-size: 2.8em; /* Ajustado */
+    margin-bottom: 25px;
+}
+
+.intro-description {
+    font-size: 1.15em;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    opacity: 0.8;
+}
+
+.value-propositions {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; /* Padrão em coluna para clareza */
+    gap: 45px; /* Aumentado um pouco o espaço */
+}
+
+.proposition-block {
+    background-color: #1a2a40;
+    padding: 35px;
+    border-radius: 12px; /* Borda um pouco mais arredondada */
+    text-align: left;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra mais pronunciada */
+    border: 1px solid rgba(0, 188, 212, 0.2); /* Borda sutil com cor de destaque */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.proposition-block:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.proposition-block h3 {
+    color: #f0f0f0;
+    font-size: 1.8em; /* Ajustado */
+    margin-bottom: 15px;
+    border-bottom: 2px solid #00bcd4; /* Cor de destaque para a linha */
+    padding-bottom: 8px;
+}
+
+.o-que-fazemos {
+    font-size: 1.05em;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    color: #cbd5e0;
+}
+
+.o-seu-ganho {
+    font-size: 1.05em;
+    line-height: 1.7;
+    color: #00bcd4; /* Cor de destaque para o ganho (verde mais suave) */
+    font-weight: 600;
+}
+
+/* ========================================= */
+/* --- SEÇÃO DE CONTATO --- */
+/* ========================================= */
+.contact-section {
+    padding: 80px 50px;
+    text-align: center;
+    background-color: #0b1a2b;
+    color: #f0f0f0;
+}
+
+.contact-section h2 {
+    color: #a0aec0;
+    font-size: 2.8em; /* Ajustado */
+    margin-bottom: 25px;
+}
+
+.contact-section .intro-description {
+    font-size: 1.15em;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    opacity: 0.8;
+}
+
+.contact-methods {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    background-color: #1a2a40;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+    border: 1px solid rgba(0, 188, 212, 0.15); /* Borda mais sutil */
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.contact-icon {
+    font-size: 3.2em; /* Ajustado */
+    color: #00bcd4; /* Cor de destaque para os ícones */
+    margin-bottom: 15px;
+}
+
+.contact-item h3 {
+    font-size: 1.6em; /* Ajustado */
+    margin-bottom: 10px;
+    color: #f0f0f0;
+}
+
+.contact-item p {
+    font-size: 0.95em;
+    color: #cbd5e0;
+    margin-bottom: 10px;
+}
+
+.contact-item a {
+    color: #00bcd4;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05em; /* Ajustado */
+    transition: color 0.3s;
+}
+
+.contact-item a:hover {
+    color: #90ee90; /* Mudar cor ao hover para o verde de destaque */
+    text-decoration: underline;
+}
+
+/* ========================================= */
+/* --- FOOTER --- */
+/* ========================================= */
+footer {
+    background-color: #0b101c;
+    text-align: center;
+    padding: 25px 0; /* Padding ajustado */
+    border-top: 1px solid #1a202c;
+    color: #a0aec0; /* Cor do texto do footer */
+    font-size: 0.9em;
+}
+
+/* ========================================= */
+/* --- WHATSAPP FLUTUANTE --- */
+/* ========================================= */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50%; /* Usar 50% para garantir círculo perfeito */
+    font-size: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra mais moderna */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.whatsapp-float:hover {
+    background-color: #1ebe56;
+    transform: translateY(-3px);
+}
+
+
+/* ========================================= */
+/* --- MEDIA QUERIES PARA RESPONSIVIDADE --- */
+/* ========================================= */
+
+@media (max-width: 992px) { /* Para tablets e laptops pequenos */
     .navbar {
-        padding: 15px 20px; /* Reduz o padding em mobile */
-        justify-content: space-between; /* Mantém logo e hamburguer separados */
+        padding: 15px 30px;
     }
 
-    /* Esconde o texto do logo em mobile, mantém apenas o ícone */
-    .logo .logo-text {
+    .navbar nav ul {
+        gap: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 3em;
+    }
+
+    .hero-content .slogan {
+        font-size: 1.1em;
+    }
+
+    .services-section, .contact-section {
+        padding: 60px 30px;
+    }
+
+    .services-section h2, .contact-section h2 {
+        font-size: 2.3em;
+    }
+
+    .intro-description {
+        font-size: 1em;
+    }
+
+    .value-propositions {
+        gap: 35px;
+    }
+
+    .proposition-block {
+        padding: 30px;
+    }
+
+    .proposition-block h3 {
+        font-size: 1.6em;
+    }
+
+    .contact-methods {
+        gap: 20px;
+    }
+}
+
+
+@media (max-width: 768px) { /* Para celulares e tablets menores */
+    /* Navbar Responsiva */
+    .navbar {
+        padding: 15px 20px;
+        justify-content: space-between;
+    }
+
+    .logo .logo-text { /* Esconde o texto do logo */
         display: none;
     }
 
-    /* Garante que o ícone do logo tenha um tamanho bom em mobile */
-    .logo-icon {
-        width: 35px;
-        height: 35px;
-        margin-right: 0; /* Remove margem extra */
+    .logo-icon { /* Ajusta tamanho do ícone */
+        width: 40px;
+        height: 40px;
+        margin-right: 0;
     }
 
-    /* Exibe o botão hamburguer em mobile */
-    .hamburger-menu {
+    .hamburger-menu { /* Mostra o botão hamburguer */
         display: block;
     }
 
-    /* Esconde o menu de navegação por padrão em mobile */
-    #main-nav {
-        display: none; /* Esconde a nav por padrão */
+    #main-nav { /* Esconde o menu de navegação por padrão */
+        display: none;
         position: absolute;
-        top: 60px; /* Abaixo da navbar */
+        top: 70px; /* Abaixo da navbar */
         left: 0;
         width: 100%;
-        background-color: #0b1a2b; /* Fundo do menu */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        z-index: 999;
+        background-color: #0b101c; /* Fundo do menu */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        z-index: 990; /* Abaixo do hamburguer, mas acima do conteúdo */
+        opacity: 0; /* Começa invisível */
+        transform: translateY(-10px); /* Começa um pouco acima */
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        overflow-y: auto; /* Permite rolagem se muitos itens */
+        max-height: calc(100vh - 70px); /* Altura máxima do menu */
     }
 
-    /* Estilo quando o menu está ativo (mostrado) */
-    #main-nav.active {
+    #main-nav.active { /* Mostra o menu quando ativo */
         display: block;
+        opacity: 1;
+        transform: translateY(0);
     }
 
     #main-nav ul {
@@ -95,7 +458,7 @@ body {
 
     #main-nav ul li {
         margin: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador de itens */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     #main-nav ul li:last-child {
@@ -103,387 +466,124 @@ body {
     }
 
     #main-nav ul li a {
-        padding: 15px; /* Aumenta o padding para facilitar o toque */
-        font-size: 1.1em;
+        padding: 18px; /* Aumenta o padding para facilitar o toque */
+        font-size: 1.2em; /* Tamanho da fonte maior para mobile */
+        color: #e2e8f0; /* Cor do texto no menu mobile */
     }
 
-    /* Ajustes para a seção hero em mobile */
+    /* Hero Section Responsiva */
     .hero-section {
-        min-height: 70vh; /* Reduz a altura da seção hero em mobile */
-        padding: 50px 20px;
+        min-height: 60vh; /* Reduz a altura da seção hero */
+        padding: 40px 15px;
     }
 
-    .hero-section h1 {
-        font-size: 2.5em; /* Reduz o tamanho da fonte do h1 */
+    .hero-content h1 {
+        font-size: 2.2em;
     }
 
-    .hero-section .slogan {
-        font-size: 1em; /* Reduz o tamanho da fonte do slogan */
-    }
-
-    .btn {
-        padding: 10px 20px;
+    .hero-content .slogan {
         font-size: 0.9em;
     }
 
-    /* Ajustes para a seção de serviços/contato em mobile */
+    .btn {
+        padding: 10px 25px;
+        font-size: 0.9em;
+        margin-top: 20px;
+    }
+
+    /* Seções de Conteúdo (Serviços e Contato) Responsivas */
     .services-section, .contact-section {
-        padding: 50px 20px;
+        padding: 40px 15px; /* Reduz o padding */
     }
 
     .services-section h2, .contact-section h2 {
-        font-size: 2em;
+        font-size: 2em; /* Reduz o título principal */
     }
 
     .intro-description {
         font-size: 0.9em;
+        margin-bottom: 30px;
     }
 
+    .value-propositions {
+        gap: 30px;
+    }
+
+    .proposition-block {
+        padding: 25px;
+        border-radius: 10px;
+    }
+
+    .proposition-block h3 {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+    }
+
+    .o-que-fazemos, .o-seu-ganho {
+        font-size: 0.95em;
+        line-height: 1.5;
+    }
+
+    /* Contato Responsivo */
     .contact-methods {
-        flex-direction: column; /* Empilha os itens de contato */
-        align-items: center; /* Centraliza os itens empilhados */
+        flex-direction: column; /* Itens em coluna */
+        align-items: center; /* Centraliza */
+        gap: 25px;
     }
 
     .contact-item {
-        width: 90%; /* Ocupa mais largura em mobile */
-        max-width: 300px; /* Garante que não fique muito grande */
+        width: 95%; /* Ocupa quase toda a largura */
+        max-width: 320px; /* Limite para não ficar muito largo */
+        padding: 25px;
     }
-}
 
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 50px;
-  background-color: #0b101c;
-  border-bottom: 1px solid #1a202c;
-}
+    .contact-icon {
+        font-size: 2.8em;
+    }
 
-.logo a {
-    display: flex; 
-    align-items: center; 
-    text-decoration: none; 
-    color: white; 
-    font-size: 2em; 
-    font-weight: bold;
-}
+    .contact-item h3 {
+        font-size: 1.4em;
+    }
 
-.logo-icon {
-    background-image: url('../img/YggdraTech.jpeg'); 
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    width: 50px; 
-    height: 50px; 
-    border-radius: 50%; 
-    margin-right: 10px;
-    background-color: #222; 
-}
+    .contact-item p, .contact-item a {
+        font-size: 0.9em;
+    }
 
-.logo-text {
-    font-family: 'Poppins', sans-serif; 
-    color: #a0aec0;
-}
-.logo-text:hover {
-    color: #00bcd4;
-}
-
-.navbar nav ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar a {
-  color: #a0aec0;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s;
-}
-
-.navbar a:hover {
-  color: #00bcd4;
-}
-
-/* Hero Section */
-.hero-section {
-  background-color: #111827;
-  background-image: url('../img/banner.jpg'); 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.8;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  position: relative;
-}
-
-.hero-content {
-  z-index: 1;
-}
-
-.hero-content h1 {
-  font-size: 3.5em;
-  margin: 0;
-}
-
-.hero-content .slogan {
-  font-size: 1.2em;
-  margin-top: 10px;
-  color: whitesmoke;
-  transition: background-color 0.3s;
-}
-
-.hero-content .slogan:hover {
-  color: #0d1222;
-}
-
-.btn {
-  background-color: #00bcd4;
-  color: #0d1222;
-  padding: 12px 25px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: 600;
-  margin-top: 20px;
-  transition: background-color 0.3s;
-}
-
-.btn:hover {
-  background-color: #00a0b8;
-}
-
-/* Services Section */
-.services-section {
-  background-color: #0d1222;
-  padding: 80px 50px;
-  text-align: center;
-}
-
-.services-section h2 {
-  font-size: 2.5em;
-  margin-bottom: 40px;
-  color: #e2e8f0;
-}
-
-.service-cards {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.card {
-  background-color: #1a202c;
-  border-radius: 10px;
-  padding: 30px;
-  width: 300px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.card h3 {
-  font-size: 1.5em;
-  color: #00bcd4;
-  margin-bottom: 10px;
-}
-
-.card p {
-  font-size: 0.9em;
-  color: #cbd5e0;
-}
-
-/* Footer */
-footer {
-  background-color: #0b101c;
-  text-align: center;
-  padding: 20px 0;
-  border-top: 1px solid #1a202c;
-}
-
-/* Estilização do Botão Flutuante do WhatsApp */
-.whatsapp-float {
-    /* Posição Fixa para flutuar sobre o conteúdo */
-    position: fixed;
-    width: 60px; /* Largura do botão */
-    height: 60px; /* Altura do botão */
-    bottom: 40px; /* Distância da parte inferior da tela */
-    right: 40px; /* Distância da lateral direita da tela */
-    background-color: #25d366; /* Cor oficial do WhatsApp */
-    color: #fff;
-    border-radius: 50px; /* Forma redonda */
-    text-align: center;
-    font-size: 30px; /* Tamanho do ícone */
-    box-shadow: 2px 2px 3px #999; /* Sombra sutil */
-    z-index: 1000; /* Garante que fique acima de outros elementos */
-
-    /* Centraliza o ícone (se estiver usando Font Awesome) */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none; /* Remove sublinhado */
-}
-
-/* Efeito de hover (opcional) */
-.whatsapp-float:hover {
-    background-color: #1ebe56;
-}
-
-/* Opcional: responsividade para telas menores */
-@media (max-width: 600px) {
+    /* WhatsApp Flutuante Responsivo */
     .whatsapp-float {
         width: 50px;
         height: 50px;
         bottom: 20px;
         right: 20px;
         font-size: 25px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     }
 }
 
-/* ========================================= */
-/* --- SEÇÃO DE SERVIÇOS (VALORES) CSS --- */
-/* ========================================= */
+@media (max-width: 480px) { /* Ajustes para celulares muito pequenos */
+    .hero-content h1 {
+        font-size: 1.8em;
+    }
 
-.services-section {
-    /* Geral da Seção */
-    padding: 80px 50px;
-    text-align: center; /* Centraliza o título h2 e o parágrafo introdutório */
-    background-color: #0d1e31; /* Fundo escuro, se diferente do header/footer */
-    color: #f0f0f0; /* Cor do texto claro */
-}
+    .hero-content .slogan {
+        font-size: 0.85em;
+    }
 
-.services-section h2 {
-    color: #a0aec0; /* Destaque azul/ciano para o título principal */
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
+    .services-section h2, .contact-section h2 {
+        font-size: 1.8em;
+    }
 
-.intro-description {
-    font-size: 1.1em;
-    max-width: 800px;
-    margin: 0 auto 50px auto; /* Centraliza e adiciona espaço abaixo */
-    opacity: 0.8;
-}
+    .intro-description {
+        font-size: 0.85em;
+    }
 
-/* Container dos Blocos de Proposta de Valor */
-.value-propositions {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex; /* Usamos flex para distribuir os blocos, se quisermos mais de um por linha */
-    flex-direction: column; /* Coloca os blocos um abaixo do outro */
-    gap: 40px; /* Espaço vertical entre os blocos */
-}
+    .proposition-block h3 {
+        font-size: 1.2em;
+    }
 
-/* Estilo para cada Bloco de Proposta */
-.proposition-block {
-    background-color: #1a2a40; /* Fundo um pouco mais claro para destaque */
-    padding: 30px;
-    border-radius: 10px;
-    text-align: left; /* Alinha o texto das descrições à esquerda */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(77, 194, 248, 0.2); /* Borda sutil com cor de destaque */
-}
-
-.proposition-block h3 {
-    /* Título principal do bloco */
-    color: #f0f0f0;
-    font-size: 1.6em;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #4dc2f8; /* Linha de destaque para o título */
-    padding-bottom: 5px;
-}
-
-/* Estilização para as classes de 'O que fazemos' e 'O seu ganho' */
-.o-que-fazemos {
-    font-size: 1em;
-    line-height: 1.6;
-    margin-bottom: 10px;
-}
-
-.o-seu-ganho {
-    font-size: 1em;
-    line-height: 1.6;
-    color: #00bcd4; /* Cor verde clara para o Ganho (Destaque Positivo) */
-    font-weight: 600;
-}
-
-/* ========================================= */
-/* --- SEÇÃO DE CONTATO CSS --- */
-/* ========================================= */
-
-.contact-section {
-    padding: 80px 50px;
-    text-align: center;
-    background-color: #0b1a2b; /* Fundo escuro */
-    color: #f0f0f0;
-}
-
-.contact-section h2 {
-    color: #a0aec0;
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
-
-.contact-methods {
-    display: flex;
-    justify-content: center; /* Centraliza os itens */
-    gap: 30px; /* Espaço entre os cartões de contato */
-    margin-top: 50px;
-    flex-wrap: wrap; /* Garante que os itens quebrem a linha em telas pequenas */
-}
-
-.contact-item {
-    background-color: #1a2a40;
-    padding: 30px;
-    border-radius: 10px;
-    width: 300px; /* Largura fixa para cada cartão */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s;
-}
-
-.contact-item:hover {
-    transform: translateY(-5px); /* Efeito sutil ao passar o mouse */
-}
-
-.contact-icon {
-    font-size: 3em;
-    color: #4dc2f8; /* Cor de destaque para os ícones */
-    margin-bottom: 15px;
-}
-
-.contact-item h3 {
-    font-size: 1.4em;
-    margin-bottom: 10px;
-}
-
-.contact-item a {
-    color: #00bcd4; /* Cor de link do contato (verde/ciano claro) */
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.contact-item a:hover {
-    text-decoration: underline;
-}
-
-/* Garante que o texto de introdução da seção de serviços não atrapalhe a nova seção */
-/* (Se você já tiver .intro-description, apenas garanta que ele funcione aqui) */
-.contact-section .intro-description {
-    font-size: 1.1em;
-    max-width: 800px;
-    margin: 0 auto 30px auto;
-    opacity: 0.8;
+    .contact-item {
+        width: 100%; /* Ocupa a largura total (com padding da section) */
+        max-width: none; /* Remove a largura máxima */
+    }
 }
