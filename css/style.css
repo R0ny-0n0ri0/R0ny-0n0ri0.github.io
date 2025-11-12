@@ -9,6 +9,147 @@ body {
   line-height: 1.6;
 }
 
+/* ========================================= */
+/* --- RESPONSIVIDADE DO HEADER/NAVBAR --- */
+/* ========================================= */
+
+/* Esconde o botão hamburguer por padrão (para desktop) */
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: white;
+    cursor: pointer;
+}
+
+/* Estilos para o menu de navegação em mobile */
+#main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Para desktop */
+}
+
+#main-nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+#main-nav ul li a:hover {
+    background-color: rgba(77, 194, 248, 0.2);
+    border-radius: 5px;
+}
+
+
+/* MEDIA QUERIES PARA RESPONSIVIDADE */
+@media (max-width: 768px) {
+    /* Navbar em mobile */
+    .navbar {
+        padding: 15px 20px; /* Reduz o padding em mobile */
+        justify-content: space-between; /* Mantém logo e hamburguer separados */
+    }
+
+    /* Esconde o texto do logo em mobile, mantém apenas o ícone */
+    .logo .logo-text {
+        display: none;
+    }
+
+    /* Garante que o ícone do logo tenha um tamanho bom em mobile */
+    .logo-icon {
+        width: 35px;
+        height: 35px;
+        margin-right: 0; /* Remove margem extra */
+    }
+
+    /* Exibe o botão hamburguer em mobile */
+    .hamburger-menu {
+        display: block;
+    }
+
+    /* Esconde o menu de navegação por padrão em mobile */
+    #main-nav {
+        display: none; /* Esconde a nav por padrão */
+        position: absolute;
+        top: 60px; /* Abaixo da navbar */
+        left: 0;
+        width: 100%;
+        background-color: #0b1a2b; /* Fundo do menu */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+    }
+
+    /* Estilo quando o menu está ativo (mostrado) */
+    #main-nav.active {
+        display: block;
+    }
+
+    #main-nav ul {
+        flex-direction: column; /* Itens do menu um abaixo do outro */
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    #main-nav ul li {
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador de itens */
+    }
+
+    #main-nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    #main-nav ul li a {
+        padding: 15px; /* Aumenta o padding para facilitar o toque */
+        font-size: 1.1em;
+    }
+
+    /* Ajustes para a seção hero em mobile */
+    .hero-section {
+        min-height: 70vh; /* Reduz a altura da seção hero em mobile */
+        padding: 50px 20px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5em; /* Reduz o tamanho da fonte do h1 */
+    }
+
+    .hero-section .slogan {
+        font-size: 1em; /* Reduz o tamanho da fonte do slogan */
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    /* Ajustes para a seção de serviços/contato em mobile */
+    .services-section, .contact-section {
+        padding: 50px 20px;
+    }
+
+    .services-section h2, .contact-section h2 {
+        font-size: 2em;
+    }
+
+    .intro-description {
+        font-size: 0.9em;
+    }
+
+    .contact-methods {
+        flex-direction: column; /* Empilha os itens de contato */
+        align-items: center; /* Centraliza os itens empilhados */
+    }
+
+    .contact-item {
+        width: 90%; /* Ocupa mais largura em mobile */
+        max-width: 300px; /* Garante que não fique muito grande */
+    }
+}
+
 /* Navbar */
 .navbar {
   display: flex;
