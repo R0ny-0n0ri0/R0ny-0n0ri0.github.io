@@ -434,6 +434,36 @@ footer {
         opacity: 1;
         pointer-events: auto;
     }
+
+    /* Section de contato mais enxuta */
+    .contact-section {
+        padding: 40px 16px;
+    }
+
+    /* Cards ocupam largura total */
+    .contact-methods {
+        gap: 20px;
+    }
+
+    .contact-item {
+        width: 100%;
+        max-width: 100%;
+        padding: 24px 20px;
+        box-sizing: border-box;
+    }
+
+    /* Texto quebra corretamente */
+    .contact-item p,
+    .contact-item a {
+        word-break: break-word;
+        text-align: center;
+    }
+
+    /* WhatsApp não invade conteúdo */
+    .whatsapp-float {
+        bottom: 16px;
+        right: 16px;
+    }
 }
 
 /* Scroll lock */
