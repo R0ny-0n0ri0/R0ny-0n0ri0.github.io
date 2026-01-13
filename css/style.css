@@ -370,14 +370,14 @@ footer {
     }
 
     .logo-icon {
-        width: 40px;
-        height: 40px;
-        margin-right: 0;
+        width: 30px;
+        height: 30px;
     }
 
     .hamburger-menu {
         display: block;
         z-index: 1100;
+        font-size: 1.6em;
     }
 
     /* Menu lateral */
@@ -538,6 +538,36 @@ footer {
         margin: 24px auto 0;
         border-radius: 2px;
     }
+
+    .hero-section {
+        min-height: auto;          
+        padding: 32px 16px 24px;
+        justify-content: flex-start;
+    }
+
+    .hero-content {
+        margin-top: 16px;
+    }
+
+    .hero-content h1 {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+    .hero-content .slogan {
+        font-size: 2em;
+        line-height: 1.4;
+    }
+
+    .btn {
+        margin-top: 16px;
+    }
+
+    .navbar {
+        padding: 6px 12px;     
+        min-height: 48px;      
+    }
+
 }
 
 /* Scroll lock */
