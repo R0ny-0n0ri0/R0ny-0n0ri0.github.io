@@ -45,8 +45,7 @@ export default function Resume() {
               "ASP.NET",
               "UML",
               "Levantamento de Requisitos",
-              "Arquitetura de Software",
-              "Desenvolvimento Full Stack"
+              "Arquitetura de Software"
             ].map((skill, i) => (
               <li
                 key={i}
